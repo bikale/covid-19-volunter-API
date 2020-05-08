@@ -1,0 +1,7 @@
+{
+  "env": {
+    "MongoURI": "mongodb+srv://bikale:Lj1SSpilw0QwrGIC@event-booking-xtmnz.mongodb.net/covidvolunteer?retryWrites=true&w=majority",
+    "PORT": 4000,
+    "JWTSECRETKEY": "somesupersecretkey"
+  }
+}
