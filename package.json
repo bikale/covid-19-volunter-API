@@ -1,0 +1,30 @@
+{
+  "name": "covid-19-volunter-api",
+  "version": "1.0.0",
+  "description": "back end api for mobile application to help users find assistance from volunteers during the time of the novel covid-19 pandemic",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.12.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^15.0.0",
+    "graphql-tools": "^5.0.0",
+    "nodemon": "^2.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maharishi-university/covid-19-volunter-API.git"
+  },
+  "author": "Bikale Aberra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maharishi-university/covid-19-volunter-API/issues"
+  },
+  "homepage": "https://github.com/maharishi-university/covid-19-volunter-API#readme"
+}
