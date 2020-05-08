@@ -2,7 +2,7 @@ const { gql } = require("apollo-server-express");
 
 const data = [
   {
-    title: "Webaa Application Programming",
+    title: "Webaaa Application Programming",
     faculty: "Asaad Saad",
     code: "CS472",
     rating: 4,
