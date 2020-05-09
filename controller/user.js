@@ -66,19 +66,28 @@ exports.login = async (req, res, next) => {
       .json({ success: false, errMessage: "Invalid Username and Password" });
     return;
   }
-
+  console.log(process.env.JWT_SECRET_KEY);
   // Create token
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
+    expiresIn: process.env.JWT_EXPIRE_DATE, //JWT_EXPIRE_DATE 15 days
   });
 
   //send response with the created token
   res.status(200).json({ success: true, token: token, role: user.roles });
 };
 
-// @desc    Logout User
+// @desc    Logout User and change the volunteer status to offline(if the volunteer is still online)
 // @route   Post /api/v1/logout
 // @access  Public
 exports.logout = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { status } = req.body;
+  try {
+    await User.updateOne(
+      { _id: req.user._id },
+      { $set: { status: "offline" } }
+    );
+    res.json({ success: true, status: "offline" });
+  } catch (e) {
+    res.json({ success: false, errMessage: e.acknowledged }); // if no match found return e =>  "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
+  }
 };
