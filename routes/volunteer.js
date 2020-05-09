@@ -7,7 +7,7 @@ const {
   changeVolunteerStatus,
 } = require("../controller/volunteer");
 
-router.get("/volunteers", getVolunteers);
+router.get("/volunteers", protect, getVolunteers);
 router.post("/changestatus", protect, authorize(), changeVolunteerStatus);
 
 module.exports = router;
