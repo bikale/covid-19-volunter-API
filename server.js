@@ -20,8 +20,9 @@ app.use(cors());
 app.use("/covidvolunteer/api/v1", userRoute);
 app.use("/covidvolunteer/api/v1", volunteerRoute);
 
+const MongoURI = process.env.MongoURI;
 mongoose
-  .connect(process.env.MongoURI, {
+  .connect(MongoURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
