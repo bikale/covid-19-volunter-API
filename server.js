@@ -20,10 +20,18 @@ app.use(cors());
 app.use("/covidvolunteer/api/v1", userRoute);
 app.use("/covidvolunteer/api/v1", volunteerRoute);
 
+//404 handler
+app.use((req, res, next) => {
+  res.status(404).json({
+    success: false,
+    data: "Resource Not Found",
+  });
+});
+
 const MongoURI =
   "mongodb+srv://bikale:Lj1SSpilw0QwrGIC@event-booking-xtmnz.mongodb.net/covidvolunteer?retryWrites=true&w=majority";
 mongoose
-  .connect(MongoURI, {
+  .connect(process.env.MongoURI || MongoURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
@@ -31,7 +39,7 @@ mongoose
   })
   .then((dbCon) => {
     console.log(`MongoDB Connected ........`);
-    app.listen(PORT, () => {
+    app.listen(process.env.PORT || PORT, () => {
       console.log(
         `Server listening on http://localhost:${PORT}/covidvolunteer/api/v1`
       );
