@@ -4,11 +4,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const dotenv = require("dotenv");
 
 const userRoute = require("./routes/user");
 const volunteerRoute = require("./routes/volunteer");
 
-const PORT = 4000;
+//load env vars
+dotenv.config({ path: "./config/config.env" });
 
 const app = express();
 
@@ -28,10 +30,10 @@ app.use((req, res, next) => {
   });
 });
 
-const MongoURI =
-  "mongodb+srv://bikale:Lj1SSpilw0QwrGIC@event-booking-xtmnz.mongodb.net/covidvolunteer?retryWrites=true&w=majority";
+const PORT = process.env.PORT || 5000;
+
 mongoose
-  .connect(process.env.MongoURI || MongoURI, {
+  .connect(process.env.MongoURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
