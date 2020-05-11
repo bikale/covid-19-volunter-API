@@ -20,7 +20,8 @@ app.use(cors());
 app.use("/covidvolunteer/api/v1", userRoute);
 app.use("/covidvolunteer/api/v1", volunteerRoute);
 
-const MongoURI = process.env.MongoURI;
+const MongoURI =
+  "mongodb+srv://bikale:Lj1SSpilw0QwrGIC@event-booking-xtmnz.mongodb.net/covidvolunteer?retryWrites=true&w=majority";
 mongoose
   .connect(MongoURI, {
     useNewUrlParser: true,
