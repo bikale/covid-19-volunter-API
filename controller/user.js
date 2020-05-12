@@ -66,7 +66,7 @@ exports.login = async (req, res, next) => {
       .json({ success: false, errMessage: "Invalid Username and Password" });
     return;
   }
-  console.log(process.env.JWT_SECRET_KEY);
+
   // Create token
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
     expiresIn: process.env.JWT_EXPIRE_DATE, //JWT_EXPIRE_DATE 15 days
